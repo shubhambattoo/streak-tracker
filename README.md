@@ -23,7 +23,7 @@ git clone https://github.com/shubhambattoo/streak-tracker.git
 1. Navigate to the project directory:
 
 ```sh
-cd streak-master
+cd streak-tracker
 ```
 
 1. Install dependencies:
