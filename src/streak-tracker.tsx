@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar } from '@/components/ui/calendar';
-import { Flame, CheckCircle } from 'lucide-react';
+import { Flame, CheckCircle, RotateCcw } from 'lucide-react';
 
 function StreakTracker() {
   const [streak, setStreak] = useState(0);
@@ -59,14 +59,28 @@ function StreakTracker() {
     }
   };
 
+  const resetStreak = () => {
+    localStorage.clear();
+    setStreak(0);
+    setCompletedDates([]);
+    setLastCompletedDate(null);
+  };
+
   return (
     <div className="min-h-dvh w-dvw mx-auto bg-gray-100 py-4 px-4 sm:px-6 lg:px-8">
-      <div className='flex justify-center flex-col items-center'>
-        <h1 className="text-3xl font-bold text-center mb-4 flex items-center"> <img width={50} src='/logo.png' alt='streak master logo' /> Streak Master</h1>
+      <div className="flex justify-center flex-col items-center">
+        <h1 className="text-3xl font-bold text-center mb-4 flex items-center">
+          {' '}
+          <img width={50} src="/logo.png" alt="streak master logo" /> Streak
+          Master
+        </h1>
         <Card className="mb-4">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center">
-              Current Streak
+              Current Streak{' '}
+              <Button onClick={resetStreak} variant={'secondary'} title='reset streak'>
+                <RotateCcw />
+              </Button>
             </CardTitle>
           </CardHeader>
           <CardContent>
